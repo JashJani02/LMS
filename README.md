@@ -1,18 +1,25 @@
-# LMS
-
-## Roles
-1) Admin (controles the whole site)
-2) Instructore (CRUD, grading operations on Courses and Quizes)
-3) Student (Attend lecture videos and quizes)
+# ICT E-Learning Platform
+<p>A lightweight, monolithic Flask-based learning management system designed for the Department of ICT. This documentation refers to the single-file version of the project where backend logic and frontend templates were contained within a single app.py.</p>
 
 ## Tech-Stack
-1) React, HTML, Tailwind (Frontend)
-2) FastAPI OR Node (Backend)
-3) SQL (Database)
-4) JWT OR Firebase (Auth)
+Backend: Python / Flask
 
+Frontend: HTML5, CSS3, JavaScript
+
+PDF Generation: ReportLab
+
+Storage: Local filesystem storage for uploaded assets
+
+Session Management: Flask-Session for user state persistence
+
+## Setup-Instructions
+1) Clone the repo<br><pre>git clone https://github.com/JashJani02/LMS.git</pre>
+2) Create Python Virtual Environment (venv)<br><pre>python -m venv .venv</pre>
+3) Install Project-dependencies via Requirements.txt file<br><pre>pip install -r requirements.txt</pre>
+
+
+### Flowchart (for future development-path)
 ``` mermaid
-
 flowchart TD
 	A(["Start: Build LMS (MVP)"]) --> B["Understand requirements from SRS<br>Roles: Admin / Instructor / Student<br>Modules: Auth, Courses, Enrollment, Lectures, Assignments, Quizzes, Certificates"]
 	B --> C["Define scope constraints (MVP)"]
