@@ -13,11 +13,11 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # --- Mock Database ---
 data = {
-    'subjects': ['IW', 'Mathematics-2', 'DLD', 'OOP'],
+    'subjects': ['WT', 'Mathematics-4', 'WT', 'FDST'],
     'content': {
-        'IW': {'videos': [], 'materials': []},
-        'Mathematics-2': {'videos': [], 'materials': []},
-        'DLD': {'videos': [], 'materials': []},
+        'WT': {'videos': [], 'materials': []},
+        'Mathematics-4': {'videos': [], 'materials': []},
+        'FDST': {'videos': [], 'materials': []},
         'OOP': {'videos': [], 'materials': []},
     },
     'users': {
@@ -114,7 +114,7 @@ HTML_TEMPLATE = """
 
         {% elif view == 'main' %}
         <h2 style="text-align:center">WELCOME</h2>
-        <p style="text-align:center">Department of ICT - Semester 2</p>
+        <b style="text-align:center">Department of ICT - Semester 4</b>
         <div class="dropdown" style="margin-top: 20px;">
             <button class="dropbtn">Select Subject</button>
             <div class="dropdown-content">
