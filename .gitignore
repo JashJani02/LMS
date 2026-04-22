@@ -1,0 +1,5 @@
+uploads/
+venv
+lms.db
+server.js
+login.html

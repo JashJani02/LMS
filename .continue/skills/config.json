@@ -1,0 +1,10 @@
+{
+  "contextProviders": [
+    {
+      "name": "file",
+      "params": {
+        "path": ".continue/skills"
+      }
+    }
+  ]
+}

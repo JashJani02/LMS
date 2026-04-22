@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FODS-ICT</title>
+    <link rel="login" href="login.html">
+    <style>
+        /* Global Styles */
+        body {
+            background-color: white;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2rem;
+            color: black;
+        }
+
+        /* Dropdown Container */
+        .dropdown {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Dropdown Button */
+        .dropbtn {
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: black;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .dropbtn:hover {
+            color: red;
+        }
+
+        .dropbtn:active {
+            background-color: red;
+            color: white;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%; /* Position menu below the button */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%);
+            background-color: white;
+            min-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            text-align: center; /* Center text in dropdown options */
+        }
+
+        .dropdown-content a {
+            color: black;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none; /* Remove border for the last item */
+        }
+
+        .dropdown-content a:hover {
+            background-color: black;
+            color: red;
+        }
+
+        /* Show Dropdown Menu */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Marwadi University<br>FODS-ICT Sem:-2<br>WELCOME</h1>
+    <div class="dropdown">
+        <!-- Dropdown Button -->
+        <button class="dropbtn">Subjects</button>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown-content">
+            <a href="IW.html">IW</a>
+            <a href="Mathematics.html">Mathematics-2</a>
+            <a href="DLD.html">DLD</a>
+            <a href="OOP.html">OOP</a>
+        </div>
+    </div>
+</body>
+
+</html>

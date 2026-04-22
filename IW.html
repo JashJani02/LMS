@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IW</title>
+    <header>ICT-Workshop</header>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+        }
+        header {
+            background-color: #41bfe9;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .tabs {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+        .tablinks {
+            background-color: inherit;
+            float: center;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tablinks:hover {
+            background-color: #ddd;
+        }
+        .tablinks.active {
+            background-color: #ccc;
+        }
+        .tabcontent {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        #video-list video {
+            display: block;
+            margin-top: 10px;
+            width: 300px;
+            height: auto;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+        .file-item a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <button class="tablinks" onclick="openTab(event, 'videos')">Videos</button>
+        <button class="tablinks" onclick="openTab(event, 'materials')">Materials</button>
+    </div>
+
+    <div id="videos" class="tabcontent">
+        <h2>Videos</h2>
+        <input type="date" id="start-date">
+        <input type="date" id="end-date">
+        <button onclick="filterVideos()">Filter</button>
+        <input type="file" id="video-upload" accept="video/*">
+        <button onclick="askVideoDate()">Upload Video</button>
+        <div id="video-list"></div>
+    </div>
+
+    <div id="materials" class="tabcontent">
+        <h2>Materials</h2>
+        <input type="file" id="material-upload" multiple>
+        <button onclick="askMaterialDate()">Upload</button>
+        <div id="material-list"></div>
+    </div>
+
+    <script>
+        let videos = [];
+        let materials = [];
+
+        // Function to open a specific tab
+        function openTab(event, tabName) {
+            let tabcontent = document.getElementsByClassName("tabcontent");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            let tablinks = document.getElementsByClassName("tablinks");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+
+        // Prompt for video upload date
+        function askVideoDate() {
+            let uploadDate = prompt("Enter upload date (YYYY-MM-DD):");
+            if (uploadDate) {
+                uploadVideo(uploadDate);
+            }
+        }
+
+        // Video upload functionality
+        function uploadVideo(uploadDate) {
+            const videoInput = document.getElementById('video-upload');
+            const videoFile = videoInput.files[0];
+
+            if (videoFile) {
+                const videoURL = URL.createObjectURL(videoFile);
+                videos.push({
+                    url: videoURL,
+                    name: videoFile.name,
+                    date: uploadDate
+                });
+                displayVideos(videos);
+                videoInput.value = ''; // Clear input after upload
+            } else {
+                alert("Please select a video file.");
+            }
+        }
+
+        // Display videos
+        function displayVideos(videoList) {
+            const videoListElement = document.getElementById('video-list');
+            videoListElement.innerHTML = ''; // Clear existing videos
+
+            videoList.forEach(video => {
+                const videoElement = document.createElement('video');
+                videoElement.src = video.url;
+                videoElement.controls = true;
+                videoListElement.appendChild(videoElement);
+            });
+        }
+
+        // Filter videos by date
+        function filterVideos() {
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+
+            if (startDate && endDate) {
+                const filteredVideos = videos.filter(video => {
+                    return video.date >= startDate && video.date <= endDate;
+                });
+                displayVideos(filteredVideos);
+            } else {
+                displayVideos(videos); // Show all videos if no filter
+            }
+        }
+
+        // Prompt for material upload date
+        function askMaterialDate() {
+            let uploadDate = prompt("Enter upload date (YYYY-MM-DD):");
+            if (uploadDate) {
+                uploadMaterials(uploadDate);
+            }
+        }
+
+        // Function to upload and display materials
+        function uploadMaterials(uploadDate) {
+            const materialInput = document.getElementById('material-upload');
+            const materialFiles = materialInput.files;
+            const materialList = document.getElementById('material-list');
+
+            for (let i = 0; i < materialFiles.length; i++) {
+                const file = materialFiles[i];
+                const fileURL = URL.createObjectURL(file);
+                materials.push({
+                    url: fileURL,
+                    name: file.name,
+                    date: uploadDate
+                });
+            }
+            displayMaterials(materials);
+        }
+
+        // Display materials
+        function displayMaterials(materialList) {
+            const materialListElement = document.getElementById('material-list');
+            materialListElement.innerHTML = ''; // Clear existing materials
+
+            materialList.forEach(material => {
+                const fileElement = document.createElement('div');
+                fileElement.classList.add('file-item');
+
+                const fileIcon = document.createElement('span');
+                fileIcon.textContent = "📄"; // Default file icon
+
+                const fileLink = document.createElement('a');
+                fileLink.href = material.url;
+                fileLink.textContent = material.name;
+                fileLink.download = material.name; // Make it downloadable
+                fileLink.target = "_blank"; // Open in new tab for viewable files
+
+                fileElement.appendChild(fileIcon);
+                fileElement.appendChild(fileLink);
+                materialListElement.appendChild(fileElement);
+            });
+        }
+    </script>
+</body>
+</html>

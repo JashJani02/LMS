@@ -1,0 +1,21 @@
+<h2>Dashboard ({{ role }})</h2>
+
+<a href="/logout">Logout</a>
+
+{% if role == 'faculty' %}
+<h3>Upload Video</h3>
+<form action="/upload-video" method="POST" enctype="multipart/form-data">
+  <input type="file" name="video" required>
+  <button>Upload</button>
+</form>
+{% endif %}
+
+<h3>Videos</h3>
+<div id="videos"></div>
+
+<h3>Progress</h3>
+<div id="progress"></div>
+
+<button onclick="getCertificate()">Download Certificate</button>
+
+<script src="/static/script.js"></script>
