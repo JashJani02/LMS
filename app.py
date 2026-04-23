@@ -13,12 +13,12 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # --- Mock Database ---
 data = {
-    'subjects': ['WT', 'Mathematics-4', 'WT', 'FDST'],
+    'subjects': ['WT', 'Mathematics-4', 'DSA', 'FDST'],
     'content': {
         'WT': {'videos': [], 'materials': []},
         'Mathematics-4': {'videos': [], 'materials': []},
+        'DSA': {'videos': [], 'materials': []},
         'FDST': {'videos': [], 'materials': []},
-        'OOP': {'videos': [], 'materials': []},
     },
     'users': {
         '20230101001': {'gr': '123456', 'role': 'student', 'watched': set()},
